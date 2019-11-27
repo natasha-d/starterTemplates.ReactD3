@@ -18,5 +18,29 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  color: rgba(8, 141, 112, 0.67);
+}
+
+#wrapper{
+    height: 100vh;
+    background: rgb(179, 179, 179);
+}
+
+#header{
+    height: 13vh;
+    background: rgba(68, 128, 125, 0.89);
+}
+
+#content{
+    height: 65vh;
+}
+
+.test{
+    height: 65vh;
+    background: #ffa07a;
+    margin-top: 1vh;
+    margin-left: 0;
+    margin-right: 0;
+    border: thin solid grey;
+    border-radius: 5px
 }
