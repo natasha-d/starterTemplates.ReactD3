@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import * as d3 from "d3";
 
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,6 +14,7 @@ import logo from './logo.svg';
 
 // d3 components
 import MapVis from "./mapVis";
+import BrushVis from "./brushVis"
 
 
 class App extends Component {
@@ -20,12 +22,21 @@ class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: 'test string'
+            data: 'placeholder',
+            range:[]
         };
     }
 
     componentDidMount() {
-        console.log(this.state)
+    }
+
+    setNewRange = (childData) => {
+        console.log('test', this);
+        this.setState({range: childData});
+    };
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('app did update. why?', this.state);
     }
 
     // prepare grid
@@ -48,7 +59,7 @@ class App extends Component {
                             {/* content */}
                             <Row style={{height: '65vh'}}>
                                 <Col lg={7}>
-                                    <Row className="test"><MapVis data={this.state.data}/></Row>
+                                    <Row className="test"><MapVis range={this.state.range}/></Row>
                                 </Col>
                                 <Col lg={5}>
                                     <Row className="test">hello</Row>
@@ -59,7 +70,7 @@ class App extends Component {
                             <Row style={{height: '20vh'}}>
                                 <Col>
                                     <Row style={{height: '17vh', marginTop: '2vh',  marginLeft: '0', marginRight: '0', background: 'lightgrey', border: 'thin solid grey', borderRadius: '5px'}}>
-                                        test
+                                        <BrushVis parentCallback={this.setNewRange}/>
                                     </Row>
                                 </Col>
                             </Row>
